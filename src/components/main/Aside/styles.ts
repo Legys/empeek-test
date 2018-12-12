@@ -10,7 +10,8 @@ export const STJumbotron = styled(Jumbotron)`
 `;
 
 export const STHeading = styled.h1`
-  font-size: 39px;
+  font-size: 36px;
+  font-weight: 300;
   color: #fff;
   text-transform: uppercase;
 `;
