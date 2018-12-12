@@ -5,11 +5,12 @@ import { Col, Row } from "reactstrap";
 import Aside from "src/components/main/Aside";
 import Comments from "src/components/main/Comments";
 import Notes from "src/components/main/Notes";
+import { STPageWrapper } from "./styles";
 
 class MainPageContainer extends React.Component {
   public render() {
     return (
-      <Row>
+      <STPageWrapper>
         <Col sm={3}>
           <Aside />
         </Col>
@@ -19,7 +20,7 @@ class MainPageContainer extends React.Component {
         <Col sm={4}>
           <Comments />
         </Col>
-      </Row>
+      </STPageWrapper>
     );
   }
 }
