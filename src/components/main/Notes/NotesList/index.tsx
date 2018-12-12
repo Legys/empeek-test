@@ -9,7 +9,7 @@ interface IProps {
 
 const NotesList = (props: IProps) => {
   return (
-    <ListGroup flush={true}>
+    <ListGroup flush>
       {props.notes.map((note: INote) => (
         <NoteItem key={note.id} note={note} />
       ))}

@@ -1,17 +1,24 @@
 import * as React from "react";
 import { INote } from "../../types";
-import { ListGroupItem } from "reactstrap";
+import { ListGroupItem, Button } from "reactstrap";
+import { STListText, STBadge, STButtonText, STGroupItem } from "./styles";
 
 interface IProps {
   note: INote;
 }
 
 const NoteItem = (props: IProps) => {
+  const commentsLength = 132;
   return (
-    <ListGroupItem>
-      {props.note.title} {props.note.comments.length}
-      {/* <STButton /> */}
-    </ListGroupItem>
+    <STGroupItem className="d-flex justify-content-between align-items-centers">
+      <STListText>
+        <span>{props.note.title}</span>
+        {commentsLength > 0 && <STBadge pill>{commentsLength}</STBadge>}
+      </STListText>
+      <Button outline color="danger">
+        <STButtonText>Delete</STButtonText>
+      </Button>
+    </STGroupItem>
   );
 };
 
