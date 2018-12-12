@@ -1,13 +1,30 @@
 import styled from "styled-components";
 import { Button, ListGroupItem, Badge } from "reactstrap";
+import * as React from "react";
 
-export const STGroupItem = styled(ListGroupItem)`
+interface IListItemProps {
+  isActive: boolean;
+}
+
+export const STGroupItem = styled(({ isActive, ...rest }) => (
+  <ListGroupItem {...rest} />
+))`
+  ::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -37px;
+    width: 5px;
+    height: 100%;
+    ${(props: IListItemProps) =>
+      props.isActive ? "border-left: 5px solid #ff2f5a;" : ""}
+  }
   &&& {
     padding-left: 0;
     padding-right: 0;
   }
-  /* display: flex;
-  justify-content: space-between; */
+
+  position: relative;
 `;
 
 export const STListText = styled.span`
