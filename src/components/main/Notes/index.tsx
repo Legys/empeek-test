@@ -5,14 +5,34 @@ import { CardBody } from "reactstrap";
 import NoteInput from "src/components/main/Notes/NoteInput";
 import NotesList from "src/components/main/Notes/NotesList";
 import CardWrapper from "src/components/ui/CardWrapper";
+import { INote } from "./types";
 
-class Notes extends React.Component {
-  public render() {
+interface IState {
+  notes: INote[];
+}
+
+class Notes extends React.Component<any, IState> {
+  readonly state = {
+    notes: []
+  };
+
+  handleNoteAdd = (note: INote) => {
+    this.setState({ notes: [...this.state.notes, note] });
+  };
+
+  componentDidMount() {
+    const notes: INote[] = JSON.parse(localStorage.getItem("notes") as string);
+    if (notes) {
+      this.setState({ notes });
+    }
+  }
+
+  render() {
     return (
       <CardWrapper title="Items">
         <CardBody>
-          <NoteInput />
-          <NotesList />
+          <NoteInput onNoteAdd={this.handleNoteAdd} />
+          <NotesList notes={this.state.notes} />
         </CardBody>
       </CardWrapper>
     );
