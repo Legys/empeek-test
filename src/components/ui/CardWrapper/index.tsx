@@ -1,12 +1,18 @@
 import * as React from "react";
-import { STCard } from "./styles";
+import { STCard, STCardTitle } from "./styles";
 
 interface IProps {
+  title: string;
   children: React.ReactNode;
 }
 
 const CardWrapper = (props: IProps) => {
-  return <STCard>{props.children}</STCard>;
+  return (
+    <STCard>
+      <STCardTitle>{props.title}</STCardTitle>
+      {props.children}
+    </STCard>
+  );
 };
 
 export default CardWrapper;
