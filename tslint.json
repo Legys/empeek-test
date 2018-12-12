@@ -8,6 +8,12 @@
     ]
   },
   "rules": {
-    "ordered-imports": false
+    "ordered-imports": false,
+    "member-access": false,
+    "no-console": {
+      "severity": "warning"
+    },
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false
   }
 }
