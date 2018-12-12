@@ -1,8 +1,14 @@
 import * as React from "react";
+import MainPageContainer from "src/components/main";
 
 class App extends React.Component {
   public render() {
-    return <div className="App">Hello, Empeek!</div>;
+    return (
+      <div className="App">
+        Hello, Empeek!
+        <MainPageContainer />
+      </div>
+    );
   }
 }
 
