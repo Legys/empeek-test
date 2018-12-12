@@ -6,4 +6,5 @@ export interface INote {
 
 export interface IComment {
   id: string;
+  title: string;
 }
