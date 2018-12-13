@@ -19,3 +19,14 @@ export const deleteNoteById = (id: string): INote => {
 
 export const findAll = (): INote[] =>
   JSON.parse(localStorage.getItem("notes") as string);
+
+export const insertOneNote = (note: INote): INote[] => {
+  const notes: INote[] = JSON.parse(localStorage.getItem("notes") as string);
+  if (notes) {
+    notes.push(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
+  } else {
+    localStorage.setItem("notes", JSON.stringify([note]));
+  }
+  return notes;
+};

@@ -4,6 +4,7 @@ import { STButton, STButtonText } from "./styles";
 import * as uuid from "uuid";
 import { INote } from "../types";
 import FormFeedback from "reactstrap/lib/FormFeedback";
+import { insertOneNote } from "src/utils/storage/notes";
 
 interface IState {
   noteTitle: string;
@@ -41,14 +42,7 @@ class NoteInput extends React.Component<IProps, IState> {
       title: this.state.noteTitle,
       comments: []
     };
-    const notes: INote[] = JSON.parse(localStorage.getItem("notes") as string);
-    if (notes) {
-      notes.push(note);
-      localStorage.setItem("notes", JSON.stringify(notes));
-    } else {
-      localStorage.setItem("notes", JSON.stringify([note]));
-    }
-
+    insertOneNote(note);
     this.props.onNoteAdd(note);
   }
 
