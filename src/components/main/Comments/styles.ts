@@ -9,6 +9,7 @@ export const STText = styled.div`
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+
   color: #666666;
   font-size: 12px;
   padding: 15px;
