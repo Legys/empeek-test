@@ -7,7 +7,14 @@ interface IProps {
 }
 
 const CommentItem = (props: IProps) => (
-  <ListGroupItem>{props.item.title}</ListGroupItem>
+  <ListGroupItem>
+    {props.item.text.split("\n").map((item, key) => (
+      <span key={key}>
+        {item}
+        <br />
+      </span>
+    ))}
+  </ListGroupItem>
 );
 
 export default CommentItem;
