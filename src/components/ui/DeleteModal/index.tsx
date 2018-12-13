@@ -24,7 +24,7 @@ class DeleteModal extends React.Component<IProps> {
             {commentsLength} {commentsLength === 1 ? "comment" : "comments"}
           </strong>
           <br />
-          Are you confirm deletion?
+          Are you sure to delete?
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.props.onModalDone}>
