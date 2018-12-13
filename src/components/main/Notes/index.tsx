@@ -11,7 +11,7 @@ interface IProps {
   notes: INote[];
   onNoteSelect: (note: INote) => void;
   onNoteAdd: (note: INote) => void;
-  onNoteDelete: (id: string) => void;
+  onNoteDelete: (note: INote) => void;
   selectedNoteId: string;
 }
 

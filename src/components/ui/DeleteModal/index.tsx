@@ -1,30 +1,34 @@
 import * as React from "react";
 
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import { INote } from "src/components/main/Notes/types";
 
 interface IProps {
   onModalDone: () => void;
   onModalToggle: () => void;
+  note: INote;
   isOpen: boolean;
 }
 
 class DeleteModal extends React.Component<IProps> {
   render() {
+    const commentsLength: number = this.props.note.comments.length;
     return (
       <Modal toggle={this.props.onModalToggle} isOpen={this.props.isOpen}>
-        <ModalHeader toggle={this.props.onModalToggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={this.props.onModalToggle}>
+          You gonna delete this note
+        </ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Note "<strong>{this.props.note.title}</strong>" with{" "}
+          <strong>
+            {commentsLength} {commentsLength === 1 ? "comment" : "comments"}
+          </strong>
+          <br />
+          Are you confirm deletion?
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.props.onModalDone}>
-            Do Something
+            Delete
           </Button>{" "}
           <Button color="secondary" onClick={this.props.onModalToggle}>
             Cancel

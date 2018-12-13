@@ -6,14 +6,14 @@ import { STListText, STBadge, STButtonText, STGroupItem } from "./styles";
 interface IProps {
   note: INote;
   onNoteSelect: (note: INote) => void;
-  onNoteDelete: (id: string) => void;
+  onNoteDelete: (note: INote) => void;
   selectedNoteId: string;
 }
 
 class NoteItem extends React.Component<IProps> {
   handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    this.props.onNoteDelete(this.props.note.id);
+    this.props.onNoteDelete(this.props.note);
   };
 
   render() {

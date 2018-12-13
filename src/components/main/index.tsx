@@ -15,6 +15,7 @@ import DeleteModal from "../ui/DeleteModal";
 
 interface IState {
   selectedNote: INote;
+  noteToDelete: INote;
   notes: INote[];
   showModal: boolean;
 }
@@ -22,6 +23,7 @@ interface IState {
 class MainPageContainer extends React.Component<any, IState> {
   state = {
     selectedNote: null,
+    noteToDelete: null,
     notes: [],
     showModal: false
   };
@@ -55,11 +57,11 @@ class MainPageContainer extends React.Component<any, IState> {
     });
   };
 
-  handleNoteDelete = (id: string) => {
-    console.log("====================================");
-    console.log(id);
-    console.log("====================================");
-    this.toggle();
+  handleNoteDelete = (note: INote) => {
+    this.setState({
+      noteToDelete: note,
+      showModal: true
+    });
   };
 
   handleNoteAdd = (note: INote) => {
@@ -131,11 +133,14 @@ class MainPageContainer extends React.Component<any, IState> {
             />
           )}
         </Col>
-        <DeleteModal
-          onModalDone={this.handleConfirmDeletion}
-          onModalToggle={this.toggle}
-          isOpen={this.state.showModal}
-        />
+        {this.state.showModal && (
+          <DeleteModal
+            onModalDone={this.handleConfirmDeletion}
+            onModalToggle={this.toggle}
+            isOpen={this.state.showModal}
+            note={this.state.noteToDelete}
+          />
+        )}
       </STPageWrapper>
     );
   }
