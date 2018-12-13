@@ -7,12 +7,15 @@ interface IState {
 }
 interface IProps {
   onCommentAdd: (commentText: string) => void;
+  selectedNoteNumber: number;
 }
 
 class CommentInput extends React.Component<IProps, IState> {
   readonly state = {
     commentText: ""
   };
+
+  inputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const keyCode: number = event.keyCode;
@@ -31,6 +34,12 @@ class CommentInput extends React.Component<IProps, IState> {
     this.setState({ commentText: "" });
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedNoteNumber !== this.props.selectedNoteNumber) {
+      this.inputRef.current.focus();
+    }
+  }
+
   render() {
     return (
       <Form>
@@ -44,7 +53,7 @@ class CommentInput extends React.Component<IProps, IState> {
                 autoFocus
                 type="textarea"
                 name="text"
-                id="exampleText"
+                innerRef={this.inputRef}
                 onKeyDown={this.handleKeyDown}
                 onChange={this.handleChange}
                 value={this.state.commentText}

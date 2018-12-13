@@ -26,7 +26,10 @@ const Comments = (props: IProps) => {
           </STText>
         )}
       </STListWrapper>
-      <CommentInput onCommentAdd={props.onCommentAdd} />
+      <CommentInput
+        onCommentAdd={props.onCommentAdd}
+        selectedNoteNumber={props.selectedNoteNumber}
+      />
     </CardWrapper>
   );
 };
