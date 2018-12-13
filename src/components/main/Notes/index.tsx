@@ -9,9 +9,14 @@ import { INote } from "./types";
 
 interface IState {
   notes: INote[];
+  // selectedNoteId: string;
 }
 
-class Notes extends React.Component<any, IState> {
+interface IProps {
+  onNoteSelect(note: INote): void;
+}
+
+class Notes extends React.Component<IProps, IState> {
   readonly state = {
     notes: []
   };
@@ -32,7 +37,10 @@ class Notes extends React.Component<any, IState> {
       <CardWrapper title="Items">
         <CardBody>
           <NoteInput onNoteAdd={this.handleNoteAdd} />
-          <NotesList notes={this.state.notes} />
+          <NotesList
+            notes={this.state.notes}
+            onNoteSelect={this.props.onNoteSelect}
+          />
         </CardBody>
       </CardWrapper>
     );

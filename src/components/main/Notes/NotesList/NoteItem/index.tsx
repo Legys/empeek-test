@@ -5,12 +5,16 @@ import { STListText, STBadge, STButtonText, STGroupItem } from "./styles";
 
 interface IProps {
   note: INote;
+  onNoteSelect: (note: INote) => void;
 }
 
 const NoteItem = (props: IProps) => {
   const commentsLength = 132;
   return (
-    <STGroupItem className="d-flex justify-content-between align-items-centers">
+    <STGroupItem
+      className="d-flex justify-content-between align-items-centers"
+      onClick={() => props.onNoteSelect(props.note)}
+    >
       <STListText>
         <span>{props.note.title}</span>
         {commentsLength > 0 && <STBadge pill>{commentsLength}</STBadge>}

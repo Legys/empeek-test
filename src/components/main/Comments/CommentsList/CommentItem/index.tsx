@@ -1,6 +1,6 @@
 import * as React from "react";
 import ListGroupItem from "reactstrap/lib/ListGroupItem";
-import { IComment } from "src/components/main/Notes/types";
+import { IComment } from "../../types";
 
 interface IProps {
   item: IComment;
