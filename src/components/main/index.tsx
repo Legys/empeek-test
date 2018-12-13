@@ -84,7 +84,7 @@ class MainPageContainer extends React.Component<any, IState> {
   };
 
   handleNoteAdd = (note: INote) => {
-    this.setState({ notes: [...this.state.notes, note] });
+    this.setState({ notes: [...this.state.notes, note], selectedNote: note });
   };
 
   getId = (): string => {
