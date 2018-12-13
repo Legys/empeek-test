@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Row } from "reactstrap";
 
-export const STPageWrapper = styled(Row)`
+export const STPageWrapper = styled.div`
   background-color: #f9f9f9;
 `;

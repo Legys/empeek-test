@@ -8,6 +8,4 @@ export const STButton = styled(Button)`
   }
 `;
 
-export const STButtonText = styled.span`
-  padding: 8px 18px;
-`;
+export const STButtonText = styled.span``;

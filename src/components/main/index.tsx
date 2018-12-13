@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Col, Row } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
 
 import Aside from "src/components/main/Aside";
 import Comments from "src/components/main/Comments";
@@ -124,27 +124,32 @@ class MainPageContainer extends React.Component<any, IState> {
 
     return (
       <STPageWrapper>
-        <Col sm={2}>
-          <Aside />
-        </Col>
-        <Col sm={5}>
-          <Notes
-            onNoteSelect={this.onNoteSelect}
-            onNoteAdd={this.handleNoteAdd}
-            onNoteDelete={this.handleNoteDelete}
-            notes={this.state.notes}
-            selectedNoteId={selectedId}
-          />
-        </Col>
-        <Col sm={4}>
-          {this.state.selectedNote && (
-            <Comments
-              selectedNoteNumber={selectedNoteNumber}
-              selectedNote={this.state.selectedNote}
-              onCommentAdd={this.handleCommentAdd}
-            />
-          )}
-        </Col>
+        <Container fluid>
+          <Row>
+            <Col lg={2} className="d-none d-lg-block pl-0">
+              <Aside />
+            </Col>
+            <Col xs={12} md={6} lg={5}>
+              <Notes
+                onNoteSelect={this.onNoteSelect}
+                onNoteAdd={this.handleNoteAdd}
+                onNoteDelete={this.handleNoteDelete}
+                notes={this.state.notes}
+                selectedNoteId={selectedId}
+              />
+            </Col>
+            <Col xs={12} md={6} lg={5}>
+              {this.state.selectedNote && (
+                <Comments
+                  selectedNoteNumber={selectedNoteNumber}
+                  selectedNote={this.state.selectedNote}
+                  onCommentAdd={this.handleCommentAdd}
+                />
+              )}
+            </Col>
+          </Row>
+        </Container>
+
         {this.state.showModal && (
           <DeleteModal
             onModalDone={this.handleConfirmDeletion}

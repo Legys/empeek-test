@@ -1,5 +1,13 @@
 import * as React from "react";
-import { FormGroup, Input, Form, Row, Col, FormFeedback } from "reactstrap";
+import {
+  FormGroup,
+  Input,
+  Form,
+  Row,
+  Col,
+  FormFeedback,
+  Container
+} from "reactstrap";
 import UserAvatar from "src/components/ui/UserAvatar";
 
 interface IState {
@@ -55,30 +63,32 @@ class CommentInput extends React.Component<IProps, IState> {
   render() {
     return (
       <Form>
-        <Row>
-          <Col sm={2}>
-            <UserAvatar />
-          </Col>
-          <Col sm={10}>
-            <FormGroup>
-              <Input
-                autoFocus
-                invalid={!this.state.isValid}
-                type="textarea"
-                name="text"
-                innerRef={this.inputRef}
-                onKeyDown={this.handleKeyDown}
-                onChange={this.handleChange}
-                value={this.state.commentText}
-              />
-              {!this.state.isValid && (
-                <FormFeedback>
-                  Comment must be more than 2 characters
-                </FormFeedback>
-              )}
-            </FormGroup>
-          </Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col xs={2}>
+              <UserAvatar />
+            </Col>
+            <Col xs={10}>
+              <FormGroup>
+                <Input
+                  autoFocus
+                  invalid={!this.state.isValid}
+                  type="textarea"
+                  name="text"
+                  innerRef={this.inputRef}
+                  onKeyDown={this.handleKeyDown}
+                  onChange={this.handleChange}
+                  value={this.state.commentText}
+                />
+                {!this.state.isValid && (
+                  <FormFeedback>
+                    Comment must be more than 2 characters
+                  </FormFeedback>
+                )}
+              </FormGroup>
+            </Col>
+          </Row>
+        </Container>
       </Form>
     );
   }

@@ -3,6 +3,7 @@ import { Jumbotron } from "reactstrap";
 
 export const STJumbotron = styled(Jumbotron)`
   &&& {
+    margin-bottom: 0;
     background-color: #2b2f3e;
     height: 100vh;
     border-radius: 0;

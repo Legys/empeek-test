@@ -10,6 +10,7 @@ export const STCard = styled.div`
   border: 1px solid #f2f2f2;
 
   padding: 15px;
+  margin: 15px;
 `;
 
 export const STCardTitle = styled.h5`
