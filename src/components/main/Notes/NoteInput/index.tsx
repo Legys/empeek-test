@@ -3,9 +3,11 @@ import { Form, FormGroup, Input, Button, Row, Col } from "reactstrap";
 import { STButton, STButtonText } from "./styles";
 import * as uuid from "uuid";
 import { INote } from "../types";
+import FormFeedback from "reactstrap/lib/FormFeedback";
 
 interface IState {
   noteTitle: string;
+  isValid: boolean;
 }
 
 interface IProps {
@@ -14,17 +16,23 @@ interface IProps {
 
 class NoteInput extends React.Component<IProps, IState> {
   readonly state = {
-    noteTitle: ""
+    noteTitle: "",
+    isValid: true
   };
 
   handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    this.setState({ noteTitle: event.currentTarget.value });
+    const value: string = event.currentTarget.value;
+    this.setState({ noteTitle: value, isValid: value.length > 2 });
   };
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.createNewNote();
-    this.setState({ noteTitle: "" });
+    if (this.state.noteTitle.length < 3) {
+      this.setState({ isValid: false });
+    } else if (this.state.isValid) {
+      this.createNewNote();
+      this.setState({ noteTitle: "" });
+    }
   };
 
   createNewNote() {
@@ -51,16 +59,26 @@ class NoteInput extends React.Component<IProps, IState> {
           <Col sm={8}>
             <FormGroup>
               <Input
+                invalid={!this.state.isValid}
                 type="text"
                 name="noteTitle"
                 placeholder="type name here..."
                 onChange={this.handleChange}
                 value={this.state.noteTitle}
               />
+              {!this.state.isValid && (
+                <FormFeedback>
+                  Title must be more than 2 characters
+                </FormFeedback>
+              )}
             </FormGroup>
           </Col>
           <Col sm={4}>
-            <STButton color="primary" type="submit">
+            <STButton
+              color="primary"
+              type="submit"
+              disabled={!this.state.isValid}
+            >
               <STButtonText>Add new</STButtonText>
             </STButton>
           </Col>

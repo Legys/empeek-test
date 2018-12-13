@@ -1,9 +1,10 @@
 import * as React from "react";
-import { FormGroup, Input, Form, Row, Col } from "reactstrap";
+import { FormGroup, Input, Form, Row, Col, FormFeedback } from "reactstrap";
 import UserAvatar from "src/components/ui/UserAvatar";
 
 interface IState {
   commentText: string;
+  isValid: boolean;
 }
 interface IProps {
   onCommentAdd: (commentText: string) => void;
@@ -12,6 +13,7 @@ interface IProps {
 
 class CommentInput extends React.Component<IProps, IState> {
   readonly state = {
+    isValid: true,
     commentText: ""
   };
 
@@ -26,12 +28,22 @@ class CommentInput extends React.Component<IProps, IState> {
   };
 
   handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    this.setState({ commentText: event.currentTarget.value });
+    const value: string = event.currentTarget.value;
+    this.setState({
+      commentText: value,
+      isValid: value.length > 2
+    });
   };
 
   handleAddComment = () => {
-    this.props.onCommentAdd(this.state.commentText);
-    this.setState({ commentText: "" });
+    if (this.state.commentText.length < 3) {
+      this.setState({
+        isValid: false
+      });
+    } else if (this.state.isValid) {
+      this.props.onCommentAdd(this.state.commentText);
+      this.setState({ commentText: "" });
+    }
   };
 
   componentDidUpdate(prevProps) {
@@ -51,6 +63,7 @@ class CommentInput extends React.Component<IProps, IState> {
             <FormGroup>
               <Input
                 autoFocus
+                invalid={!this.state.isValid}
                 type="textarea"
                 name="text"
                 innerRef={this.inputRef}
@@ -58,6 +71,11 @@ class CommentInput extends React.Component<IProps, IState> {
                 onChange={this.handleChange}
                 value={this.state.commentText}
               />
+              {!this.state.isValid && (
+                <FormFeedback>
+                  Comment must be more than 2 characters
+                </FormFeedback>
+              )}
             </FormGroup>
           </Col>
         </Row>
