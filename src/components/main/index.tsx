@@ -52,6 +52,12 @@ class MainPageContainer extends React.Component<any, IState> {
     });
   };
 
+  handleNoteDelete = (id: string) => {
+    console.log("====================================");
+    console.log(id);
+    console.log("====================================");
+  };
+
   handleNoteAdd = (note: INote) => {
     this.setState({ notes: [...this.state.notes, note] });
   };
@@ -94,6 +100,7 @@ class MainPageContainer extends React.Component<any, IState> {
           <Notes
             onNoteSelect={this.onNoteSelect}
             onNoteAdd={this.handleNoteAdd}
+            onNoteDelete={this.handleNoteDelete}
             notes={this.state.notes}
             selectedNoteId={selectedId}
           />

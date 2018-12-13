@@ -6,27 +6,35 @@ import { STListText, STBadge, STButtonText, STGroupItem } from "./styles";
 interface IProps {
   note: INote;
   onNoteSelect: (note: INote) => void;
+  onNoteDelete: (id: string) => void;
   selectedNoteId: string;
 }
 
-const NoteItem = (props: IProps) => {
-  const commentsLength: number = props.note.comments.length;
-  const isActive: boolean = props.note.id === props.selectedNoteId;
-  return (
-    <STGroupItem
-      className="d-flex justify-content-between align-items-centers"
-      onClick={() => props.onNoteSelect(props.note)}
-      isActive={isActive}
-    >
-      <STListText>
-        <span>{props.note.title}</span>
-        {commentsLength > 0 && <STBadge pill>{commentsLength}</STBadge>}
-      </STListText>
-      <Button outline color="danger">
-        <STButtonText>Delete</STButtonText>
-      </Button>
-    </STGroupItem>
-  );
-};
+class NoteItem extends React.Component<IProps> {
+  handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    this.props.onNoteDelete(this.props.note.id);
+  };
+
+  render() {
+    const commentsLength: number = this.props.note.comments.length;
+    const isActive: boolean = this.props.note.id === this.props.selectedNoteId;
+    return (
+      <STGroupItem
+        className="d-flex justify-content-between align-items-centers"
+        onClick={() => this.props.onNoteSelect(this.props.note)}
+        isActive={isActive}
+      >
+        <STListText>
+          <span>{this.props.note.title}</span>
+          {commentsLength > 0 && <STBadge pill>{commentsLength}</STBadge>}
+        </STListText>
+        <Button outline color="danger" onClick={this.handleClick}>
+          <STButtonText>Delete</STButtonText>
+        </Button>
+      </STGroupItem>
+    );
+  }
+}
 
 export default NoteItem;
