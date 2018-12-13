@@ -56,6 +56,24 @@ class MainPageContainer extends React.Component<any, IState> {
     this.setState({ notes: [...this.state.notes, note] });
   };
 
+  getId = (): string => {
+    if (this.state.selectedNote) {
+      return this.state.selectedNote.id;
+    }
+    return null;
+  };
+
+  getNumber = (): number => {
+    if (this.state.selectedNote) {
+      const selectedNoteNumber =
+        this.state.notes.findIndex(
+          (note: INote) => note.id === this.state.selectedNote.id
+        ) + 1;
+      return selectedNoteNumber;
+    }
+    return null;
+  };
+
   componentDidMount() {
     const notes: INote[] = JSON.parse(localStorage.getItem("notes") as string);
     if (notes) {
@@ -64,6 +82,9 @@ class MainPageContainer extends React.Component<any, IState> {
   }
 
   public render() {
+    const selectedId: string = this.getId();
+    const selectedNoteNumber: number = this.getNumber();
+
     return (
       <STPageWrapper>
         <Col sm={2}>
@@ -74,11 +95,13 @@ class MainPageContainer extends React.Component<any, IState> {
             onNoteSelect={this.onNoteSelect}
             onNoteAdd={this.handleNoteAdd}
             notes={this.state.notes}
+            selectedNoteId={selectedId}
           />
         </Col>
         <Col sm={4}>
           {this.state.selectedNote && (
             <Comments
+              selectedNoteNumber={selectedNoteNumber}
               selectedNote={this.state.selectedNote}
               onCommentAdd={this.handleCommentAdd}
             />

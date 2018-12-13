@@ -11,6 +11,7 @@ interface IProps {
   notes: INote[];
   onNoteSelect: (note: INote) => void;
   onNoteAdd: (note: INote) => void;
+  selectedNoteId: string;
 }
 
 class Notes extends React.Component<IProps> {
@@ -22,6 +23,7 @@ class Notes extends React.Component<IProps> {
           <NotesList
             notes={this.props.notes}
             onNoteSelect={this.props.onNoteSelect}
+            selectedNoteId={this.props.selectedNoteId}
           />
         </CardBody>
       </CardWrapper>

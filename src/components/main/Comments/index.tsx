@@ -8,13 +8,14 @@ import { STListWrapper, STText } from "./styles";
 
 interface IProps {
   selectedNote: INote;
+  selectedNoteNumber: number;
   onCommentAdd: (commentText: string) => void;
 }
 
 const Comments = (props: IProps) => {
   const comments: IComment[] = props.selectedNote.comments;
   return (
-    <CardWrapper title="Comments">
+    <CardWrapper title={`Comments #${props.selectedNoteNumber}`}>
       <STListWrapper>
         {comments.length > 0 ? (
           <CommentsList comments={comments} />
