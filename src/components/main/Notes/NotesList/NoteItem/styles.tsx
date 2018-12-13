@@ -20,6 +20,9 @@ export const STGroupItem = styled(({ isActive, ...rest }) => (
       props.isActive ? "border-left: 5px solid #ff2f5a;" : ""}
   }
   &&& {
+    :first-child {
+      border-top: 0;
+    }
     padding-left: 0;
     padding-right: 0;
     color: #2b2f3e;
