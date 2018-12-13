@@ -11,16 +11,19 @@ import { insertById } from "src/utils/storage/comments";
 import * as uuid from "uuid";
 import { IComment } from "./Comments/types";
 import update from "immutability-helper";
+import DeleteModal from "../ui/DeleteModal";
 
 interface IState {
   selectedNote: INote;
   notes: INote[];
+  showModal: boolean;
 }
 
 class MainPageContainer extends React.Component<any, IState> {
   state = {
     selectedNote: null,
-    notes: []
+    notes: [],
+    showModal: false
   };
 
   onNoteSelect = (note: INote) => {
@@ -56,6 +59,7 @@ class MainPageContainer extends React.Component<any, IState> {
     console.log("====================================");
     console.log(id);
     console.log("====================================");
+    this.toggle();
   };
 
   handleNoteAdd = (note: INote) => {
@@ -78,6 +82,19 @@ class MainPageContainer extends React.Component<any, IState> {
       return selectedNoteNumber;
     }
     return null;
+  };
+
+  toggle = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  };
+
+  handleConfirmDeletion = () => {
+    console.log("====================================");
+    console.log("delete");
+    console.log("====================================");
+    this.toggle();
   };
 
   componentDidMount() {
@@ -114,6 +131,11 @@ class MainPageContainer extends React.Component<any, IState> {
             />
           )}
         </Col>
+        <DeleteModal
+          onModalDone={this.handleConfirmDeletion}
+          onModalToggle={this.toggle}
+          isOpen={this.state.showModal}
+        />
       </STPageWrapper>
     );
   }
