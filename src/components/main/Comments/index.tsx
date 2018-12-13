@@ -4,7 +4,7 @@ import CommentsList from "./CommentsList";
 import { INote } from "../Notes/types";
 import { IComment } from "./types";
 import CommentInput from "./CommentInput";
-import { STListWrapper } from "./styles";
+import { STListWrapper, STText } from "./styles";
 
 interface IProps {
   selectedNote: INote;
@@ -19,7 +19,10 @@ const Comments = (props: IProps) => {
         {comments.length > 0 ? (
           <CommentsList comments={comments} />
         ) : (
-          <h2>Nothing here</h2>
+          <STText>
+            <img src="/img/chat.png" alt="" width="50px" height="50px" />
+            Leave your comments in the field below
+          </STText>
         )}
       </STListWrapper>
       <CommentInput onCommentAdd={props.onCommentAdd} />
