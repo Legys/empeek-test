@@ -18,13 +18,18 @@ export const getById = (id: string) => {
   return [];
 };
 
+//
+
 export const insertById = (id: string, value: IComment) => {
   const notes: INote[] = getNotes();
   if (notes) {
     const noteIndex: number = notes.findIndex((n: INote) => n.id === id);
-    if (noteIndex) {
+    if (noteIndex >= 0) {
       notes[noteIndex].comments.push(value);
       localStorage.setItem("notes", JSON.stringify(notes));
+      return notes[noteIndex];
     }
+    return null;
   }
+  return null;
 };
