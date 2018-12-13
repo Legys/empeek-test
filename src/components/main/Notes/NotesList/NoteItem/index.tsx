@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const NoteItem = (props: IProps) => {
-  const commentsLength = 132;
+  const commentsLength = props.note.comments.length;
   return (
     <STGroupItem
       className="d-flex justify-content-between align-items-centers"
