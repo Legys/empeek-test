@@ -22,6 +22,14 @@ export const STGroupItem = styled(({ isActive, ...rest }) => (
   &&& {
     padding-left: 0;
     padding-right: 0;
+    color: #2b2f3e;
+    font-size: 16px;
+    font-weight: bold;
+
+    :hover {
+      cursor: pointer;
+      color: #666666;
+    }
   }
 
   position: relative;

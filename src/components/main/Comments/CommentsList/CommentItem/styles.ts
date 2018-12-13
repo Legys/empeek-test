@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ListGroupItem from "reactstrap/lib/ListGroupItem";
+import { ListGroupItem } from "reactstrap";
 
 export const STGroupItem = styled(ListGroupItem)`
   overflow-wrap: break-word;
