@@ -16,3 +16,6 @@ export const deleteNoteById = (id: string): INote => {
   }
   return null;
 };
+
+export const findAll = (): INote[] =>
+  JSON.parse(localStorage.getItem("notes") as string);

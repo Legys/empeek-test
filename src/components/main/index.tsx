@@ -12,7 +12,7 @@ import * as uuid from "uuid";
 import { IComment } from "./Comments/types";
 import update from "immutability-helper";
 import DeleteModal from "../ui/DeleteModal";
-import { deleteNoteById } from "src/utils/storage/notes";
+import { deleteNoteById, findAll } from "src/utils/storage/notes";
 
 interface IState {
   selectedNote: INote;
@@ -112,7 +112,7 @@ class MainPageContainer extends React.Component<any, IState> {
   };
 
   componentDidMount() {
-    const notes: INote[] = JSON.parse(localStorage.getItem("notes") as string);
+    const notes: INote[] = findAll();
     if (notes) {
       this.setState({ notes });
     }
