@@ -41,6 +41,7 @@ class CommentInput extends React.Component<IProps, IState> {
           <Col sm={10}>
             <FormGroup>
               <Input
+                autoFocus
                 type="textarea"
                 name="text"
                 id="exampleText"
