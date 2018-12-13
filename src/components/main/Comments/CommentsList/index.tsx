@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const CommentsList = (props: IProps) => (
-  <ListGroup>
+  <ListGroup flush>
     {props.comments.map((item: IComment) => (
       <CommentItem key={item.id} item={item} />
     ))}
