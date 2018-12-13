@@ -12,6 +12,7 @@ import * as uuid from "uuid";
 import { IComment } from "./Comments/types";
 import update from "immutability-helper";
 import DeleteModal from "../ui/DeleteModal";
+import { deleteNoteById } from "src/utils/storage/notes";
 
 interface IState {
   selectedNote: INote;
@@ -57,6 +58,24 @@ class MainPageContainer extends React.Component<any, IState> {
     });
   };
 
+  handleConfirmDeletion = () => {
+    const deletedNote = deleteNoteById(this.state.noteToDelete.id);
+
+    const noteIndex: number = this.state.notes.findIndex(
+      n => n.id === deletedNote.id
+    );
+
+    const newNotes: INote[] = update(this.state.notes, {
+      $splice: [[noteIndex, 1]]
+    });
+
+    this.setState({
+      showModal: false,
+      notes: newNotes,
+      selectedNote: null
+    });
+  };
+
   handleNoteDelete = (note: INote) => {
     this.setState({
       noteToDelete: note,
@@ -90,13 +109,6 @@ class MainPageContainer extends React.Component<any, IState> {
     this.setState({
       showModal: !this.state.showModal
     });
-  };
-
-  handleConfirmDeletion = () => {
-    console.log("====================================");
-    console.log("delete");
-    console.log("====================================");
-    this.toggle();
   };
 
   componentDidMount() {
