@@ -11,24 +11,24 @@ interface IProps {
   notes: INote[];
   onNoteSelect: (note: INote) => void;
   onNoteAdd: (note: INote) => void;
+  onNoteDelete: (id: string) => void;
   selectedNoteId: string;
 }
 
-class Notes extends React.Component<IProps> {
-  render() {
-    return (
-      <CardWrapper title="Items">
-        <CardBody>
-          <NoteInput onNoteAdd={this.props.onNoteAdd} />
-          <NotesList
-            notes={this.props.notes}
-            onNoteSelect={this.props.onNoteSelect}
-            selectedNoteId={this.props.selectedNoteId}
-          />
-        </CardBody>
-      </CardWrapper>
-    );
-  }
-}
+const Notes = (props: IProps) => {
+  return (
+    <CardWrapper title="Items">
+      <CardBody>
+        <NoteInput onNoteAdd={props.onNoteAdd} />
+        <NotesList
+          notes={props.notes}
+          onNoteSelect={props.onNoteSelect}
+          onNoteDelete={props.onNoteDelete}
+          selectedNoteId={props.selectedNoteId}
+        />
+      </CardBody>
+    </CardWrapper>
+  );
+};
 
 export default Notes;
