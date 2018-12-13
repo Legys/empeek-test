@@ -1,6 +1,6 @@
 import * as React from "react";
 import { STCard, STCardTitle } from "./styles";
-
+import PerfectScrollbar from "react-perfect-scrollbar";
 interface IProps {
   title: string;
   children: React.ReactNode;
@@ -8,10 +8,12 @@ interface IProps {
 
 const CardWrapper = (props: IProps) => {
   return (
-    <STCard>
-      <STCardTitle>{props.title}</STCardTitle>
-      {props.children}
-    </STCard>
+    <PerfectScrollbar>
+      <STCard>
+        <STCardTitle>{props.title}</STCardTitle>
+        {props.children}
+      </STCard>
+    </PerfectScrollbar>
   );
 };
 
