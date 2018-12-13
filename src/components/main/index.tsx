@@ -1,18 +1,21 @@
 import * as React from "react";
+import update from "immutability-helper";
+import * as uuid from "uuid";
 
 import { Container, Col, Row } from "reactstrap";
 
+import { insertById } from "src/utils/storage/comments";
+import { deleteNoteById, findAll } from "src/utils/storage/notes";
+
+import { STPageWrapper } from "./styles";
+
+import { INote } from "src/components/main/Notes/types";
+import { IComment } from "src/components/main/Comments/types";
+
+import DeleteModal from "src/components/ui/DeleteModal";
 import Aside from "src/components/main/Aside";
 import Comments from "src/components/main/Comments";
 import Notes from "src/components/main/Notes";
-import { STPageWrapper } from "./styles";
-import { INote } from "./Notes/types";
-import { insertById } from "src/utils/storage/comments";
-import * as uuid from "uuid";
-import { IComment } from "./Comments/types";
-import update from "immutability-helper";
-import DeleteModal from "../ui/DeleteModal";
-import { deleteNoteById, findAll } from "src/utils/storage/notes";
 
 interface IState {
   selectedNote: INote;

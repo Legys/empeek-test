@@ -1,9 +1,12 @@
 import * as React from "react";
-import ListGroupItem from "reactstrap/lib/ListGroupItem";
-import { IComment } from "../../types";
-import UserAvatar from "src/components/ui/UserAvatar";
+
 import { Row, Col, Container } from "reactstrap";
 import { STGroupItem } from "./styles";
+
+import { IComment } from "src/components/main/Comments/types";
+
+import UserAvatar from "src/components/ui/UserAvatar";
+
 interface IProps {
   item: IComment;
 }

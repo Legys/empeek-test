@@ -1,10 +1,13 @@
 import * as React from "react";
+
+import { STListWrapper, STText } from "./styles";
+
+import { INote } from "src/components/main/Notes/types";
+import { IComment } from "./types";
+
 import CardWrapper from "src/components/ui/CardWrapper";
 import CommentsList from "./CommentsList";
-import { INote } from "../Notes/types";
-import { IComment } from "./types";
 import CommentInput from "./CommentInput";
-import { STListWrapper, STText } from "./styles";
 
 interface IProps {
   selectedNote: INote;

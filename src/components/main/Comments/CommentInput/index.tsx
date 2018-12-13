@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   FormGroup,
   Input,
@@ -8,6 +9,7 @@ import {
   FormFeedback,
   Container
 } from "reactstrap";
+
 import UserAvatar from "src/components/ui/UserAvatar";
 
 interface IState {

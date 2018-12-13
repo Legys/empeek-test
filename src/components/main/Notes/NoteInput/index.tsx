@@ -1,10 +1,21 @@
 import * as React from "react";
-import { Form, FormGroup, Input, Row, Col, Container } from "reactstrap";
-import { STButton, STButtonText } from "./styles";
 import * as uuid from "uuid";
-import { INote } from "../types";
-import FormFeedback from "reactstrap/lib/FormFeedback";
+
+import {
+  Form,
+  FormGroup,
+  FormFeedback,
+  Input,
+  Row,
+  Col,
+  Container
+} from "reactstrap";
+
 import { insertOneNote } from "src/utils/storage/notes";
+
+import { INote } from "src/components/main/Notes/types";
+
+import { STButton, STButtonText } from "./styles";
 
 interface IState {
   noteTitle: string;

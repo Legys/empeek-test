@@ -1,6 +1,7 @@
 import * as React from "react";
-import { INote } from "../../types";
+
 import { Button } from "reactstrap";
+import { INote } from "src/components/main/Notes/types";
 import { STListText, STBadge, STButtonText, STGroupItem } from "./styles";
 
 interface IProps {

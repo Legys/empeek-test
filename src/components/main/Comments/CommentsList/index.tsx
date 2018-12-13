@@ -1,7 +1,9 @@
 import * as React from "react";
+
 import { ListGroup } from "reactstrap";
+import { IComment } from "src/components/main/Comments/types";
+
 import CommentItem from "./CommentItem";
-import { IComment } from "../types";
 
 interface IProps {
   comments: IComment[];

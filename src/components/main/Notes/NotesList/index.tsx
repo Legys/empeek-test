@@ -1,7 +1,9 @@
 import * as React from "react";
 import { ListGroup } from "reactstrap";
-import { INote } from "../types";
-import NoteItem from "./NoteItem";
+
+import NoteItem from "src/components/main/Notes/NotesList/NoteItem";
+
+import { INote } from "src/components/main/Notes/types";
 
 interface IProps {
   notes: INote[];
