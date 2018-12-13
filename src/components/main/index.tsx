@@ -10,6 +10,7 @@ import { INote } from "./Notes/types";
 import { insertById } from "src/utils/storage/comments";
 import * as uuid from "uuid";
 import { IComment } from "./Comments/types";
+import update from "immutability-helper";
 
 interface IState {
   selectedNote: INote;
@@ -33,9 +34,18 @@ class MainPageContainer extends React.Component<any, IState> {
     };
     const updatedNote: INote = insertById(this.state.selectedNote.id, comment);
 
-    const newNotes = this.state.notes.slice(0);
-    const note: INote = this.state.notes.find(n => n.id === updatedNote.id);
-    note.comments.push(comment);
+    const noteIndex: number = this.state.notes.findIndex(
+      n => n.id === updatedNote.id
+    );
+
+    const newNotes: INote[] = update(this.state.notes, {
+      [noteIndex]: {
+        comments: {
+          $push: [comment]
+        }
+      }
+    });
+
     this.setState({
       notes: newNotes,
       selectedNote: updatedNote
