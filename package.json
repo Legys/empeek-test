@@ -1,7 +1,12 @@
 {
-  "name": "my-app",
+  "name": "empeek-test",
+  "homepage": "http://legys.github.io/",
+  "author": {
+    "email": "legyssss@gmail.com",
+    "name": "Alexander Dubrovin"
+  },
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@types/reactstrap": "^6.4.3",
     "@types/styled-components": "^4.1.4",
