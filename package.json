@@ -15,7 +15,6 @@
     "immutability-helper": "^2.9.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-perfect-scrollbar": "^1.4.2",
     "react-scripts-ts": "3.1.0",
     "reactstrap": "^6.5.0",
     "styled-components": "^4.1.2",

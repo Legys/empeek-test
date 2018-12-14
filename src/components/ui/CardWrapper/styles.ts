@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const STCard = styled.div`
   margin-top: 35px;
   max-height: 91vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 
   box-shadow: 1px 1px 3px 0px #dedede;
   background-color: #ffffff;

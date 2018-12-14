@@ -5,7 +5,6 @@ import App from "./App";
 
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "react-perfect-scrollbar/dist/css/styles.css";
 
 import registerServiceWorker from "./registerServiceWorker";
 
