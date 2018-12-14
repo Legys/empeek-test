@@ -5,7 +5,7 @@ const getNotes = (): INote[] =>
   JSON.parse(localStorage.getItem("notes") as string);
 
 // it was optimized in the farther development,
-// I remained it here to demonstrate proof of concept
+// it's still there to demonstrate proof of concept
 
 export const getById = (id: string) => {
   const notes: INote[] = getNotes();
