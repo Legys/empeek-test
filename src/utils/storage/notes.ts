@@ -7,7 +7,7 @@ export const deleteNoteById = (id: string): INote => {
     const noteIndex: number = storedNotes.findIndex(
       (note: INote) => note.id === id
     );
-    if (noteIndex) {
+    if (noteIndex >= 0) {
       const deletedNote: INote[] = storedNotes.splice(noteIndex, 1);
       localStorage.setItem("notes", JSON.stringify(storedNotes));
       return deletedNote[0];
