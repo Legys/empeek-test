@@ -5,7 +5,7 @@ import { STJumbotron, STHeading, STDescription } from "./styles";
 const Aside = () => {
   return (
     <STJumbotron>
-      <STHeading>Dairy App</STHeading>
+      <STHeading>Diary App</STHeading>
       <STDescription>Comment with no sense</STDescription>
     </STJumbotron>
   );
