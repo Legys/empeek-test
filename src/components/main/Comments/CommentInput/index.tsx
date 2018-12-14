@@ -67,10 +67,10 @@ class CommentInput extends React.Component<IProps, IState> {
       <Form>
         <Container>
           <Row>
-            <Col xs={2}>
+            <Col xs={3} sm={2}>
               <UserAvatar />
             </Col>
-            <Col xs={10}>
+            <Col xs={9} sm={10}>
               <FormGroup>
                 <Input
                   autoFocus

@@ -15,10 +15,10 @@ const CommentItem = (props: IProps) => (
   <STGroupItem>
     <Container>
       <Row>
-        <Col xs={2}>
+        <Col xs={3} sm={2}>
           <UserAvatar />
         </Col>
-        <Col xs={10}>
+        <Col xs={9} sm={10}>
           {props.item.text.split("\n").map((item, key) => (
             <span key={key}>
               {item}
