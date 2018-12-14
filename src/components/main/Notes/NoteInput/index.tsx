@@ -15,7 +15,7 @@ import { insertOneNote } from "src/utils/storage/notes";
 
 import { INote } from "src/components/main/Notes/types";
 
-import { STButton, STButtonText } from "./styles";
+import { STButton } from "./styles";
 
 interface IState {
   noteTitle: string;
@@ -60,37 +60,35 @@ class NoteInput extends React.Component<IProps, IState> {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Container>
-          <Row>
-            <Col xs={12} sm={8} md={7}>
-              <FormGroup>
-                <Input
-                  invalid={!this.state.isValid}
-                  type="text"
-                  name="noteTitle"
-                  placeholder="type name here..."
-                  onChange={this.handleChange}
-                  value={this.state.noteTitle}
-                />
-                {!this.state.isValid && (
-                  <FormFeedback>
-                    Title must be more than 2 characters
-                  </FormFeedback>
-                )}
-              </FormGroup>
-            </Col>
-            <Col xs={12} sm={4} md={5}>
-              <STButton
-                color="primary"
-                type="submit"
-                block
-                disabled={!this.state.isValid}
-              >
-                <STButtonText>Add new</STButtonText>
-              </STButton>
-            </Col>
-          </Row>
-        </Container>
+        <Row>
+          <Col xs={12} sm={8} md={7}>
+            <FormGroup>
+              <Input
+                invalid={!this.state.isValid}
+                type="text"
+                name="noteTitle"
+                placeholder="type name here..."
+                onChange={this.handleChange}
+                value={this.state.noteTitle}
+              />
+              {!this.state.isValid && (
+                <FormFeedback>
+                  Title must be more than 2 characters
+                </FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+          <Col xs={12} sm={4} md={5}>
+            <STButton
+              color="primary"
+              type="submit"
+              block
+              disabled={!this.state.isValid}
+            >
+              Add new
+            </STButton>
+          </Col>
+        </Row>
       </Form>
     );
   }

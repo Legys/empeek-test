@@ -17,5 +17,6 @@ export const STCardTitle = styled.h5`
   color: #565a69;
   font-size: 36px;
   font-weight: 300;
+  padding-left: 15px;
   /* margin-bottom: 15px; */
 `;

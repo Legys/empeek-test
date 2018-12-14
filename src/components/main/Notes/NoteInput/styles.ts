@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "reactstrap";
+import { Button, Row } from "reactstrap";
 
 export const STButton = styled(Button)`
   &&& {
@@ -8,4 +8,8 @@ export const STButton = styled(Button)`
   }
 `;
 
-export const STButtonText = styled.span``;
+export const Wrapper = styled(Row)`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+`;
