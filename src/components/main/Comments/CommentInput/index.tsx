@@ -7,10 +7,12 @@ import {
   Row,
   Col,
   FormFeedback,
-  Container
+  Container,
+  Button
 } from "reactstrap";
 
 import UserAvatar from "src/components/ui/UserAvatar";
+import { STButton } from "../../Notes/NoteInput/styles";
 
 interface IState {
   commentText: string;
@@ -44,6 +46,10 @@ class CommentInput extends React.Component<IProps, IState> {
       isValid: value.length > 2
     });
   };
+  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    this.handleAddComment();
+  };
 
   handleAddComment = () => {
     if (this.state.commentText.length < 3) {
@@ -64,7 +70,7 @@ class CommentInput extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Container>
           <Row>
             <Col xs={3} sm={2}>
@@ -88,6 +94,15 @@ class CommentInput extends React.Component<IProps, IState> {
                   </FormFeedback>
                 )}
               </FormGroup>
+            </Col>
+            <Col
+              xs={{ size: 9, offset: 3 }}
+              sm={{ size: 10, offset: 2 }}
+              className="d-lg-none"
+            >
+              <STButton block disabled={!this.state.isValid} type="submit">
+                Send
+              </STButton>
             </Col>
           </Row>
         </Container>
